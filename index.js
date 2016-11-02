@@ -15,6 +15,7 @@ function HtmlWebpackPlugin (options) {
     template: path.join(__dirname, 'default_index.ejs'),
     filename: 'index.html',
     hash: false,
+    absolute_prefix: '',
     inject: true,
     compile: true,
     favicon: false,
@@ -462,8 +463,10 @@ HtmlWebpackPlugin.prototype.htmlWebpackPluginAssets = function (compilation, chu
  * Injects the assets into the given html string
  */
 HtmlWebpackPlugin.prototype.generateAssetTags = function (assets) {
+  var absolute_prefix = this.options.absolute_prefix
   // Turn script files into script tags
   var scripts = assets.js.map(function (scriptPath) {
+    scriptPath = absolute_prefix + scriptPath
     return {
       tagName: 'script',
       closeTag: true,
