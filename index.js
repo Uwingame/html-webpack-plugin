@@ -16,6 +16,7 @@ function HtmlWebpackPlugin (options) {
     filename: 'index.html',
     hash: false,
     absolute_prefix: '',
+    file_suffix: '',
     inject: true,
     compile: true,
     favicon: false,
@@ -575,7 +576,7 @@ HtmlWebpackPlugin.prototype.appendHash = function (url, hash) {
   if (!url) {
     return url;
   }
-  return url + (url.indexOf('?') === -1 ? '?' : '&') + hash;
+  return url + (url.indexOf('?') === -1 ? '?' : '&') + hash + this.options.file_suffix;
 };
 
 /**
