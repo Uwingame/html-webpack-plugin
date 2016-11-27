@@ -576,7 +576,7 @@ HtmlWebpackPlugin.prototype.appendHash = function (url, hash) {
   if (!url) {
     return url;
   }
-  return url + (url.indexOf('?') === -1 ? '?' : '&') + hash + this.options.file_suffix;
+  return url + this.options.file_suffix + (url.indexOf('?') === -1 ? '?' : '&') + hash ;
 };
 
 /**
