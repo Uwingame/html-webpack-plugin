@@ -465,9 +465,14 @@ HtmlWebpackPlugin.prototype.htmlWebpackPluginAssets = function (compilation, chu
  */
 HtmlWebpackPlugin.prototype.generateAssetTags = function (assets) {
   var absolute_prefix = this.options.absolute_prefix
+  var file_suffix = this.options.file_suffix
+  var needHash = this.options.hash
   // Turn script files into script tags
   var scripts = assets.js.map(function (scriptPath) {
     scriptPath = absolute_prefix + scriptPath
+    if (!needHash) {
+      scriptPath += file_suffix
+    }
     return {
       tagName: 'script',
       closeTag: true,
